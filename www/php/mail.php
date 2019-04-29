@@ -34,35 +34,34 @@ try {
             'message' => 'Bad request'
         ]);
 
-    $master = "vad.bondarchuk@aol.com";
-    $subject = '[bilevugillia.com.ua] Question';
+    // $sender = "bestsorbent@білевугілля.com";
+    $sender = "bestsorbent@xn--90acdg3ada5d5fscf.com";
+
+    $master = "vad.bondarchuk@gmail.com";
+    // $master = "gram7gram.work@gmail.com";
+
+    $subject = '[bilevugillia.com.ua] Вопрос';
     $now = date('Y-m-d H:i:s');
 
-    $body = "Created at: " . $now . "\n"
-        . "Name: " . $name . "\n"
-        . "Email: " . ($email ?: '-') . "\n"
-        . "Question:\n" . $message;
+    $body = "Дата: " . $now . "\n"
+        . "Имя: " . $name . "\n"
+        . "Email: " . $email . "\n"
+        . "Вопрос:\n" . $message;
 
     $headers = "Content-type: text/plain;charset=UTF-8\r\n"
-        . 'From: ' . $email . "\r\n"
+        . 'From: ' . $sender . "\r\n"
         . 'X-Mailer: PHP/' . phpversion();
 
-    $isSend = \mail($master, $subject, $body, $headers);
+    mail($master, $subject, $body, $headers);
 
     $log = "date:" . $now . ";master=" . $master . ";subject=" . $subject . ";content=[" . $body . "]\n";
 
     file_put_contents('./__logs/mails.txt', $log, FILE_APPEND);
 
-    if (!$isSend) {
-        json_response([
-            'status' => 'error',
-            'message' => 'Not sent'
-        ]);
-    } else {
-        json_response([
-            'status' => 'success',
-        ]);
-    }
+    json_response([
+        'status' => 'success',
+    ]);
+
 } catch (\Exception $e) {
     json_response([
         'status' => 'error',
