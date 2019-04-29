@@ -117,3 +117,29 @@ button[disabled]:hover {
 .navbar-brand {
     margin: 0
 }
+
+@media (max-width: 576px) {
+    h1 {
+        font-size: 20pt !important;
+    }
+    h2 {
+        font-size: 18pt !important;
+    }
+    h3 {
+        font-size: 17pt !important;
+    }
+    h4 {
+        font-size: 15pt !important;
+    }
+    h5 {
+        font-size: 12pt !important;
+    }
+}
+
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 1200px) {
+
+}
